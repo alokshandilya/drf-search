@@ -12,5 +12,9 @@ class Product(models.Model):
         sale_price = float(self.price) * 0.8  # 20% off
         return f"{sale_price:.2f}"
 
+    def get_owner_msg(self):
+        msg = f"Alok Shandilya is {self.title}'s owner"
+        return msg
+
     def __str__(self):
         return f"{self.title} | Rs. {self.price}"
