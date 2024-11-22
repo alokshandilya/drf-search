@@ -27,4 +27,6 @@ class ProductSerializer(serializers.ModelSerializer):
         # print(obj.sale_price)
         # print(obj.get_discount())
 
+        if not isinstance(obj, Product):
+            return None
         return obj.get_owner_msg()

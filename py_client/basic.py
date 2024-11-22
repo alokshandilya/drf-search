@@ -2,10 +2,18 @@ import requests
 
 endpoint = "http://localhost:8000/api/"
 
-response = requests.get(
+# GET request
+# response = requests.get(endpoint)
+
+# POST request
+response = requests.post(
     endpoint,
-    params={"product_id": 7},  # query parameters (can be placed in endpoint)
-    json={"username": "aloks"},  # JSON data in body
+    # JSON data in body
+    json={
+        "title": "SmartPhone, Asus X00TD",
+        "price": 5000,
+        "content": "Asus Zenfone Max Pro M1 second hand",
+    },
 )
 
 print(response.json())
