@@ -19,7 +19,10 @@ def api_home(request, *args, **kwargs):
     if request.method == "POST":
         serializer = ProductSerializer(data=request.data)
 
-        if serializer.is_valid():
+        if serializer.is_valid(raise_exception=True):
             instance = serializer.save()
             return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        # return Response(
+        #     serializer.errors,
+        #     status=status.HTTP_400_BAD_REQUEST,
+        # )
