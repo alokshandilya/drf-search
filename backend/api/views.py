@@ -1,6 +1,5 @@
 from products.models import Product
 from products.serializers import ProductSerializer
-from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
@@ -22,7 +21,3 @@ def api_home(request, *args, **kwargs):
         if serializer.is_valid(raise_exception=True):
             instance = serializer.save()
             return Response(serializer.data)
-        # return Response(
-        #     serializer.errors,
-        #     status=status.HTTP_400_BAD_REQUEST,
-        # )
