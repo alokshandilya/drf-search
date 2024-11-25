@@ -1,8 +1,10 @@
-from django.urls import path
+from django.urls import include, path
 
-from .views import ProductDetailAPIView, api_home
+from .views import (
+    api_home,
+)
 
 urlpatterns = [
     path("", api_home),
-    path("products/<int:pk>/", ProductDetailAPIView.as_view()),
+    path("products/", include("products.urls")),
 ]
