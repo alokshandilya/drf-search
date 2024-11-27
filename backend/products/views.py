@@ -1,6 +1,5 @@
 from rest_framework.generics import (
-    CreateAPIView,
-    ListAPIView,
+    ListCreateAPIView,
     RetrieveAPIView,
 )
 
@@ -24,26 +23,13 @@ class ProductDetailAPIView(RetrieveAPIView):
     # lookup_field = "pk"  # default
 
 
-class ProductCreateAPIView(CreateAPIView):
+class ProductListCreateAPIView(ListCreateAPIView):
     """
-    CreateAPIView:
+    ListCreateAPIView:
 
-    Used for create-only endpoints for a single model instance.
-    Provides a `post` method handler.
-    Extends: `GenericAPIView`, `CreateModelMixin`
-    """
-
-    queryset = Product.objects.all()
-    serializer_class = ProductSerializer
-
-
-class ProductListAPIView(ListAPIView):
-    """
-    ListAPIView:
-
-    Used for read-only endpoints to represent a collection of model instances.
-    Provides a `get` method handler.
-    Extends: `GenericAPIView`, `ListModelMixin`
+    Used for read-write endpoints to represent a collection of model instances.
+    Provides `get` and `post` method handlers.
+    Extends: `GenericAPIView`, `ListModelMixin`, `CreateModelMixin`
     """
 
     queryset = Product.objects.all()
